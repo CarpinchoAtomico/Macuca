@@ -1,0 +1,357 @@
+@import url(https://fonts.googleapis.com/css?family=Noto+Sans:400,700&display=swap);
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap');
+
+/* Keyframes para Animaciones */
+@keyframes fadeInFromTop {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes glow {
+    0% {
+        text-shadow: 0 0 5px rgba(220, 20, 60, 0.4);
+    }
+    50% {
+        text-shadow: 0 0 15px rgba(220, 20, 60, 0.8), 0 0 25px rgba(220, 20, 60, 0.6);
+    }
+    100% {
+        text-shadow: 0 0 5px rgba(220, 20, 60, 0.4);
+    }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+/* Reset y Base */
+body {
+    color: white;
+    margin: 0;
+    background: #000000;
+    font-family: 'Noto Sans', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden; /* Evita desbordamiento por animaciones de "shake" */
+}
+
+/* Tipografía y Títulos */
+h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 5em;
+    color: crimson;
+    text-align: center;
+    margin: 0;
+    padding-top: 80px;
+    padding-bottom: 40px;
+    /* Animación para el título principal */
+    animation: fadeInFromTop 1s ease-out forwards, glow 2s ease-in-out infinite alternate;
+}
+@media (max-width: 900px) {
+    h1 {
+        font-size: 3em;
+        padding-top: 40px;
+    }
+}
+
+h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.5em;
+    color: white;
+    text-align: center;
+    margin-bottom: 30px;
+    animation: fadeInFromTop 1s ease-out forwards; /* Animación para subtítulos */
+}
+
+h3 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+p {
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Header y Navegación */
+header {
+    color: white;
+    font-size: 1.2em;
+    margin-top: 0;
+    animation: fadeInFromTop 0.8s ease-out forwards;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    padding-top: 20px;
+}
+
+nav li {
+    padding-right: 40px;
+    margin: 0;
+    /* Animación para que los items del menú aparezcan en secuencia */
+    opacity: 0;
+    animation: fadeInFromTop 0.6s ease-out forwards;
+}
+nav li:nth-child(1) { animation-delay: 0.1s; }
+nav li:nth-child(2) { animation-delay: 0.2s; }
+nav li:nth-child(3) { animation-delay: 0.3s; }
+nav li:nth-child(4) { animation-delay: 0.4s; }
+nav li:nth-child(5) { animation-delay: 0.5s; }
+
+
+.Logo {
+    height: 100px;
+    width: 100px;
+    margin-right: 50px;
+    padding-left: 25px;
+}
+
+.nos {
+    padding-left: 38px;
+}
+
+/* Enlaces */
+a {
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s ease, transform 0.2s ease-out; /* Añadida transición para transform */
+    font-weight: 700;
+}
+
+a:hover {
+    color: crimson;
+    transform: translateY(-3px); /* Pequeño levantamiento al pasar el ratón */
+}
+
+a.active {
+    color: darkred;
+    pointer-events: none;
+}
+
+/* Main Content (General) */
+main {
+    font-size: 1.3em;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    padding: 0 5%;
+    flex-grow: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    /* Animación general para el contenido principal */
+    animation: fadeInUp 1s ease-out forwards;
+    animation-delay: 0.6s; /* Retraso para que aparezca después del header */
+    opacity: 0; /* Asegurarse de que esté oculto al inicio */
+}
+
+/* Index.html Specific Layout */
+.index-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+    padding-top: 20px;
+}
+.index-content p {
+    padding-top: 20px;
+    text-align: justify;
+}
+@media (max-width: 900px) {
+    .index-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+.referencia {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    border: 3px solid crimson;
+    display: block;
+    box-shadow: 0 0 10px rgba(220, 20, 60, 0.5); /* Sombra inicial */
+    transition: box-shadow 0.3s ease;
+}
+.referencia:hover {
+    box-shadow: 0 0 20px rgba(220, 20, 60, 0.8), 0 0 30px rgba(220, 20, 60, 0.6); /* Resplandor al pasar el ratón */
+}
+@media (max-width: 900px) {
+    .referencia {
+        display: none;
+    }
+}
+
+/* Formulario de Contacto (Contacto.html) */
+#contactForm {
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 20px;
+    border: 1px solid darkred;
+    background-color: #111111;
+    box-shadow: 0 0 15px rgba(220, 20, 60, 0.3);
+    animation: fadeInUp 1s ease-out forwards; /* Animación para el formulario */
+    animation-delay: 0.8s;
+    opacity: 0;
+}
+
+label {
+    font-size: 1.1em;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    box-sizing: border-box;
+    border: 1px solid #555;
+    background-color: #000;
+    color: white;
+    font-size: 1em;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+    border-color: crimson;
+    box-shadow: 0 0 8px rgba(220, 20, 60, 0.6);
+    outline: none;
+}
+
+textarea {
+    resize: vertical;
+}
+
+button[type="submit"], button {
+    background-color: crimson;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease, transform 0.1s ease-in-out;
+    margin-top: 15px;
+}
+
+button:hover {
+    background-color: darkred;
+    animation: shake 0.5s; /* Animación de temblor al pasar el ratón */
+}
+
+/* Estilos para Nosotros.html y Macuca.html (Team/Lore sections) */
+.team-list, .macuca-lore {
+    padding-top: 20px;
+    margin-bottom: 40px;
+    animation: fadeInUp 1s ease-out forwards; /* Animación para estas secciones */
+    animation-delay: 0.8s;
+    opacity: 0;
+}
+
+.team-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.integrante {
+    border: 1px solid #333;
+    padding: 20px;
+    background-color: #0a0a0a;
+    box-shadow: 0 0 15px rgba(220, 20, 60, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-right: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.integrante:hover {
+    transform: translateY(-5px); /* Pequeño levantamiento al pasar el ratón */
+    box-shadow: 0 0 25px rgba(220, 20, 60, 0.6);
+}
+
+.integrante h3 {
+    font-family: 'DM Serif Display', serif;
+    color: crimson;
+    border-bottom: 2px solid darkred;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    font-size: 1.8em;
+    width: 250px;
+}
+
+.integrante ul {
+    list-style: disc;
+    padding-left: 20px;
+    margin: 0;
+    display: block; 
+}
+
+.integrante li {
+    padding: 5px 0;
+    font-size: 1.1em;
+    padding-right: 0;
+    
+}
+
+
+/* Footer */
+footer {
+    text-align: center;
+    font-size: 0.9em;
+    color: white;
+    padding: 20px 0;
+    border-top: 1px solid #333;
+    margin-top: auto;
+    animation: fadeInFromTop 1s ease-out forwards;
+    animation-delay: 1s;
+    opacity: 0;
+}
+
+footer a {
+    color: crimson;
+}
+
+footer a:hover {
+    color: white;
+}
+ul{
+    display: flex;
+    flex-wrap: wrap;
+}
+.integrante img{
+    height: 100px;
+    width: 100px;
+}
+li{
+    list-style: none;
+    margin-right: 50px;
+}
