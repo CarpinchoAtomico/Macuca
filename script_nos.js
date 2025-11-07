@@ -1,4 +1,4 @@
-let imagenes=["MACUCA", "LUCIANA", "ARACELI", "ATENCION", "GOAT", "CRISTO", "NIGERIANO", "RUBY", "MANGIO", "HOMBROS", "BRAZUCA", "SEMAFORO"]
+let imagenes=["MACUCA", "LUCIANA", "ARACELI","ELOY", "ATENCION", "GOAT", "CRISTO", "NIGERIANO", "RUBY", "MANGIO", "HOMBROS", "BRAZUCA", "SEMAFORO"]
 let participantes= {
     "Grupo": "Macuca",
     "Integrantes": [
@@ -16,6 +16,11 @@ let participantes= {
             "nombre": "Araceli",
             "apellido": "Galloro",
             "departamento": "Diseño de dispositivos"
+        },
+         {
+            "nombre": "Valentino",
+            "apellido": "Peralta",
+            "departamento": "Marketing"
         },
         {
             "nombre": "Joaquín",
@@ -68,4 +73,5 @@ let perfil= document.getElementById("participantes")
 for (let i = 0; i < participantes.Integrantes.length; i++) {
     perfil.innerHTML+="<div class='integrante'><h3>"+
     participantes.Integrantes[i].apellido+"</h3><h4>"+participantes.Integrantes[i].nombre+"</h4>"+"<h4>"+participantes.Integrantes[i].departamento+"</h4>"+"<img src='./FotosMacuca/"+imagenes[i]+".png' alt="+i+">"+"</div>"
+
   }
