@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Escape Room — Caso Yoni Macuca</title>
+  <link rel="stylesheet" href="estilos_game.css">
+</head>
+<body>
+
+  <!-- ========== PARTE 1: PUZZLE → CONTRATO → CONTRASEÑA → WHATSAPP ========== -->
+  <div id="escape-room">
+
+    <!-- PUZZLE -->
+    <div id="puzzle-container">
+      <h1>Resuelve el caso</h1>
+      <div id="puzzle"></div>
+  
+      <div id="success">¡Puzzle resuelto!</div>
+    </div>
+
+    <!-- CONTRATO -->
+    <div id="contrato">
+      <h2>Carta </h2>
+      <p><strong>6-10-2025</strong></p>
+      <p><strong>Para:</strong> Cristian Castro</p>
+      <p>
+        Hola amigo mío…
+Cristian querido, escribo esta carta con mucho miedo, desde el camarín del teatro Gran Rex.
+Decidí escribir esta carta para vos, porque sos la persona con la que más confianza tengo. Siento que algo malo va a pasar esta noche. Las vibras que están a mi alrededor no son buenas, no son las mismas de siempre.
+Siento temor por los que hoy me acompañan al show, mi familia, mis dos hermanas y mi madre.
+        <strong> Si ocurre algo raro; la contraseña es el nombre de mi canción más famosa.</strong>
+      </p>
+      <p><strong>Te quiero Cris. Att Yoni.
+      </strong> 
+      
+      <button id="nextBtn" onclick="mostrarPassword()">Siguiente</button>
+    </div>
+
+    <!-- PANTALLA CONTRASEÑA -->
+    <div id="passwordScreen">
+      <h2>Ingrese la contraseña</h2>
+      <input type="password" id="password" placeholder="Contraseña">
+      <br>
+      <button onclick="verificarPassword()">Ingresar</button>
+      <p id="error" style="color:red; display:none;">Contraseña incorrecta</p>
+    </div>
+
+    <!-- WHATSAPP -->
+    <div id="whatsapp">
+      <div class="chat-header">
+        <img src="chofer-colectivo-10022019-786691.jpg" alt="Foto Chofer" class="profile-pic">
+        <div>
+          <h3>Chofer</h3>
+          <p>en línea</p>
+        </div>
+      </div>
+
+      <div class="chat-body">
+        <div class="msg left"><strong>Chofer:</strong> Yoni, todo bien?</div>
+        <div class="msg right"><strong>Yoni:</strong> Hola Wenceslao, Bien. En 5 minutitos ya salgo..</div>
+        <div class="msg left"><strong>Chofer:</strong> Ok, estás solo?</div>
+        <div class="msg right"><strong>Yoni:</strong> Estoy con una de mis hermanas</div>
+        <div class="msg right"><strong>Yoni:</strong> Estoy por subir una foto a Instagram con ella, termino y ya voy para allá.</div>
+      </div>
+
+      <div class="chat-footer">
+        <input type="text" placeholder="Escribe un mensaje">
+        <button class="send-btn">📤</button>
+        <button class="audio-btn">🎤</button>
+      </div>
+
+      <!-- 🔹 BOTÓN A LA WEB POLICIAL -->
+      <div style="text-align:center; padding:15px;">
+        <button id="irPolicialBtn">Ir a la Web Policial</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ========== PARTE 2: WEB POLICIAL COMPLETA ========== -->
+  <div id="web-policial" style="display:none;">
+    <header id="main-header">
+      <div class="brand">
+        <div class="logo">IM</div>
+        <div>
+          <div class="titulo">Investigación Móvil</div>
+          <div class="subtitulo">Unidad de Casos Especiales</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#" class="active" data-target="inicio">Inicio</a>
+        <a href="#pistas" data-target="pistas">Pistas</a>
+      </nav>
+    </header>
+
+    <main id="main-content">
+      <section id="inicio-section" class="panel card inicio">
+        <h1>Unidad de Casos Especiales</h1>
+        <p class="meta">Sistema de investigación de campo</p>
+        <div class="inicio-bloque">
+          <div class="inicio-info">
+            <h2>Caso activo: <span class="destacado">Yoni Macuca</span></h2>
+            <p>Última actualización: 14 de noviembre de 2025</p>
+            <p>Estado: <strong class="estado">Abierto</strong></p>
+            <button class="btn iniciar-btn" data-target="caso">Ingresar al caso</button>
+          </div>
+        </div>
+      </section>
+
+      <aside class="sidebar">
+        <h3>Panel Rápido</h3>
+        <ul class="team-list">
+          <li>Oficial: Pedro Rapela — Jefe de Caso</li>
+          <li>Detective: Ramiro Rios — Investigación primaria</li>
+          <li>Forense: Dr. Mangione — Apoyo pericial</li>
+          <li>Analista: Joaquin Sasi — Redes sociales</li>
+        </ul>
+      </aside>
+
+      <section class="panel">
+        <div class="tabs">
+          <button class="active" data-section="caso">Caso</button>
+          <button data-section="equipo">Sospechosos</button>
+        </div>
+
+        <div id="caso-section" class="card">
+          <h1>Caso: Desaparición de <span class="destacado">Yoni Macuca</span></h1>
+          <div class="meta">Unidad de Casos Especiales — Registro de la escena</div>
+          <div class="historia">
+            <p><strong>Historia:</strong></p>
+            <p>Yoni Macuca, un cantante y compositor argentino, desapareció luego de uno de sus conciertos en el Gran Rex.</p>
+            <p>Era un viernes 13 de noviembre a las 3 am cuando el show de Yoni llegó a su fin...</p>
+            <p>Días después, la noticia estremeció al país: el artista había sido asesinado.</p>
+          </div>
+        </div>
+
+        <div id="equipo-section" class="card" style="display:none;">
+          <h2>Sospechosos</h2>
+          <div class="equipo-grid">
+            <div class="equipo-card"><strong>Camila y Lucia</strong><div class="rol">Hermanas de Yoni</div></div>
+            <div class="equipo-card"><strong>Estela</strong><div class="rol">Madre de Yoni</div></div>
+            <div class="equipo-card"><strong>Eugenia y Geraldine</strong><div class="rol">Maquilladoras de Yoni</div></div>
+            <div class="equipo-card"><strong>Wenceslao</strong><div class="rol">Chofer de Yoni</div></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div id="pistas-screen" class="pistas-screen" style="display:none;">
+      <button id="volver-btn" class="volver-btn">⟵ Volver</button>
+      <h1 class="titulo-pistas">Pistas: Instagram de Yoni</h1>
+      <div class="pistas-grid-screen">
+        <div class="pista"><img src="Captura de pantalla 2025-10-17 021951.png" alt="Pista 1"></div>
+        <div class="pista"><img src="fotofoto.png" alt="Pista 2"></div>
+        <div class="pista"><img src="foto2.png" alt="Pista 3"></div>
+        <div class="pista"><img src="foto5.png" alt="Pista 4"></div>
+      </div>
+      <button id="confirmar-asesino-btn" class="confirmar-btn">Confirmar al asesino</button>
+    </div>
+
+    <div id="sospechosos-screen" class="pistas-screen" style="display:none;">
+      <button class="volver-btn" id="volver-pistas">⟵ Volver</button>
+      <h1 class="titulo-pistas">¿Quién asesinó a Yoni?</h1>
+      <div class="sospechosos-grid">
+        <div class="sospechoso" data-correct="true">
+          <img src="ChatGPT Image 28 oct 2025, 11_25_11.png">
+          <button class="nombre-sospechoso">Lucia</button>
+        </div>
+        <div class="sospechoso">
+          <img src="ChatGPT Image 28 oct 2025, 11_32_49.png">
+          <button class="nombre-sospechoso">Camila</button>
+        </div>
+        <div class="sospechoso">
+          <img src="ChatGPT Image 28 oct 2025, 11_38_11.png">
+          <button class="nombre-sospechoso">Estela</button>
+        </div>
+        <div class="sospechoso">
+          <img src="ChatGPT Image 28 oct 2025, 11_45_49.png">
+          <button class="nombre-sospechoso">Wenceslao</button>
+        </div>
+        <div class="sospechoso">
+          <img src="ChatGPT Image 28 oct 2025, 11_50_19.png">
+          <button class="nombre-sospechoso">Geraldine</button>
+        </div>
+        <div class="sospechoso">
+          <img src="ChatGPT Image 28 oct 2025, 11_57_00.png">
+          <button class="nombre-sospechoso">Eugenia</button>
+        </div>
+      </div>
+    </div>
+    
+    <div id="resultado-correcto" class="pistas-screen resultado" style="display:none;">
+      <h1>✅ ¡Has resuelto el caso!</h1>
+      <p>El asesino fue identificado con éxito. La justicia se hará cargo.</p>
+      <button class="volver-btn volver-inicio">Volver al inicio</button>
+    </div>
+    
+    <div id="resultado-incorrecto" class="pistas-screen resultado" style="display:none;">
+      <h1>❌ El asesino escapó...</h1>
+      <p>Tu deducción fue incorrecta. Vuelve a analizar las pistas.</p>
+      <button class="volver-btn volver-inicio">Intentar de nuevo</button>
+    </div>
+    
+    <!-- Nueva sección de video final (oculta al inicio) -->
+    <section id="videoFinal" style="display:none; text-align:center; background-color:#000; padding:40px 0;">
+      <video id="videoCaptura" width="640" height="360" controls>
+        <source src="escaspando.mp4" type="video/mp4">
+        Tu navegador no soporta videos.
+      </video>
+      <div style="margin-top:20px;">
+        <button class="volver-btn volver-inicio">Volver al inicio</button>
+      </div>
+    </section>
+    
+    <footer id="main-footer">
+      <div class="footer-content">
+        <div>© Unidad de Casos Especiales</div>
+        <div class="nota-footer">Documento de simulación — No sustituye reporte oficial</div>
+      </div>
+
+      <!-- Video si el jugador falla -->
+<section id="videoIncorrecto" style="display:none; text-align:center; background-color:#000; padding:40px 0;">
+  <video id="videoFuga" width="640" height="360" controls>
+    <source src="PixVerse_V5_Image_Text_360P_haz_un_video_de_un.mp4" type="video/mp4">
+    Tu navegador no soporta videos.
+  </video>
+</section>
+
+    </footer>
+    
+    <script src="script.js"></script>
+    
+    <!-- Video correcto -->
+<section id="videoFinal" style="display:none; text-align:center; background-color:#000; padding:40px 0;">
+  <video id="videoCaptura" width="640" height="360">
+    <source src="PixVerse_V5_Image_Text_360P_make_a_police_offi.mp4" type="video/mp4">
+    Tu navegador no soporta videos.
+  </video>
+</section>
+
+<!-- Video incorrecto -->
+<section id="videoIncorrecto" style="display:none; text-align:center; background-color:#000; padding:40px 0;">
+  <video id="videoFuga" width="640" height="360">
+    <source src="PixVerse_V5_Image_Text_360P_haz_un_video_de_un.mp4" type="video/mp4">
+    Tu navegador no soporta videos.
+  </video>
+</section>
+
+<!-- Sello final animado -->
+<section id="selloFinal" style="display:none;">
+  <div class="sello-container">
+    <div id="sello-texto"></div>
+  </div>
+</section>
+
+<!-- Mensaje final -->
+<section id="agradecimientoFinal" style="display:none;">
+  <div class="mensaje-final">
+    <h2>¡Gracias por participar en nuestro escape room!</h2>
+    <p>Att: Equipo de Macuca 5to C</p>
+  </div>
+</section>
