@@ -1,0 +1,215 @@
+body {
+    margin: 0;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    background-color: #121212;
+    color: #fff;
+  }
+  
+  header.banner {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+  }
+  
+  .banner-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(60%);
+  }
+  
+  .artist-info {
+    position: absolute;
+    bottom: 20px;
+    left: 50px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .artist-photo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 3px solid #1DB954;
+  }
+  
+  .artist-name {
+    font-size: 2.5em;
+    margin: 0;
+  }
+  
+  .artist-followers {
+    font-size: 0.9em;
+    color: #b3b3b3;
+  }
+  
+  .follow-btn {
+    background-color: #1DB954;
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+  
+  .follow-btn:hover {
+    background-color: #17a74a;
+  }
+  
+  main {
+    padding: 30px 50px;
+  }
+  
+  .albums-section h2,
+  .songs-section h2 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+  }
+  
+  .albums {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .album {
+    width: 180px;
+    text-align: center;
+  }
+  
+  .album img {
+    width: 100%;
+    border-radius: 10px;
+    transition: transform 0.3s;
+  }
+  
+  .album img:hover {
+    transform: scale(1.05);
+  }
+  
+  /* === Canciones tipo Spotify con botón === */
+  
+  .songs-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+  }
+  
+  .songs-table th {
+    text-align: left;
+    font-weight: normal;
+    color: #b3b3b3;
+    padding-bottom: 10px;
+  }
+  
+  .songs-table td {
+    padding: 10px 0;
+    border-bottom: 1px solid #333;
+  }
+  
+  .songs-table tr {
+    transition: background-color 0.2s;
+  }
+  
+  .songs-table tr:hover {
+    background-color: #1a1a1a;
+  }
+  
+  .song-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .album-cover {
+    width: 45px;
+    height: 45px;
+    border-radius: 5px;
+  }
+  
+  .song-title {
+    margin: 0;
+    font-weight: 500;
+  }
+  
+  .explicit {
+    display: inline-block;
+    background-color: #b3b3b3;
+    color: #121212;
+    font-size: 0.7em;
+    font-weight: bold;
+    padding: 2px 4px;
+    border-radius: 3px;
+    margin-left: 4px;
+  }
+  
+  td:nth-child(3),
+  td:nth-child(4) {
+    text-align: right;
+    color: #b3b3b3;
+  }
+  
+  td:nth-child(5) {
+    text-align: center;
+  }
+  
+  .play-btn {
+    background-color: #1DB954;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    color: white;
+    cursor: pointer;
+    font-size: 1em;
+    transition: 0.3s;
+  }
+  
+  .play-btn:hover {
+    background-color: #17a74a;
+  }
+  
+  .see-more {
+    margin-top: 10px;
+    color: #b3b3b3;
+    font-size: 0.9em;
+    cursor: pointer;
+  }
+  
+  .see-more:hover {
+    color: #fff;
+    text-decoration: underline;
+  }
+  
+  footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9em;
+    color: #999;
+    border-top: 1px solid #333;
+  }
+  .play-btn {
+    background-color: #1DB954;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    color: white;
+    cursor: pointer;
+    font-size: 1em;
+    transition: 0.3s;
+  }
+  
+  .play-btn:hover {
+    background-color: #17a74a;
+  }
+  
+  /* Nuevo: cuando está activo */
+  .play-btn.active {
+    background-color: #fff;
+    color: #1DB954;
+  }
