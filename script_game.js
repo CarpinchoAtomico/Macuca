@@ -1,3 +1,4 @@
+// ===================== ETAPA 1: PUZZLE CON ARRASTRE =====================
 const puzzle = document.getElementById("puzzle");
 const success = document.getElementById("success");
 const contrato = document.getElementById("contrato");
