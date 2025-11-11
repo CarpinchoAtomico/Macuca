@@ -1,0 +1,624 @@
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background-color: #0a0a0a;
+  color: #f1f1f1;
+  overflow-x: hidden;
+}
+
+/* ======== PUZZLE ======== */
+#puzzle-container {
+  text-align: center;
+  margin-top: 40px;
+}
+
+#puzzle {
+  width: 400px;
+  height: 400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 2px;
+  border: 3px solid #333;
+  background: #222;
+}
+
+.piece {
+  width: 100%;
+  height: 100%;
+  background-image: url("Hola amigo mio (1).png");
+  background-size: 400px 400px;
+  cursor: grab;
+  transition: transform 0.2s;
+}
+
+.piece:active {
+  cursor: grabbing;
+  transform: scale(1.1);
+}
+
+.drag-over {
+  outline: 3px dashed #00b7ff;
+}
+
+#autoBtn {
+  background: #2b82ff;
+  border: none;
+  padding: 10px 20px;
+  color: white;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+  margin-top: 15px;
+}
+
+#autoBtn:hover {
+  background: #1769d1;
+}
+
+#success {
+  display: none;
+  font-size: 20px;
+  color: #00ff9d;
+  margin-top: 15px;
+}
+
+
+/* ======== CONTRATO ======== */
+#contrato {
+  display: none;
+  background: #1c1c1c;
+  color: #eaeaea;
+  width: 80%;
+  margin: 50px auto;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(255,255,255,0.1);
+  line-height: 1.6;
+}
+
+#contrato button {
+  background: #007bff;
+  border: none;
+  padding: 10px 20px;
+  color: white;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+#contrato button:hover {
+  background: #005ec9;
+}
+
+/* ======== PANTALLA CONTRASEÑA ======== */
+#passwordScreen {
+  display: none;
+  text-align: center;
+  margin-top: 60px;
+}
+
+#passwordScreen input {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  width: 200px;
+  font-size: 16px;
+  text-align: center;
+}
+
+#passwordScreen button {
+  background: #28a745;
+  border: none;
+  padding: 10px 20px;
+  color: white;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+/* ======== WHATSAPP ======== */
+#whatsapp {
+  display: none;
+  width: 380px;
+  background: #111;
+  border-radius: 12px;
+  margin: 50px auto;
+  box-shadow: 0 0 15px rgba(255,255,255,0.1);
+}
+
+.chat-header {
+  background: #202c33;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.chat-header img.profile-pic {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.chat-header h3 {
+  margin: 0;
+}
+
+.chat-body {
+  padding: 15px;
+  background: #0b141a;
+  height: 350px;
+  overflow-y: auto;
+}
+
+.msg {
+  margin: 8px 0;
+  padding: 8px 12px;
+  border-radius: 12px;
+  width: fit-content;
+  max-width: 75%;
+  line-height: 1.4;
+}
+
+.msg.left {
+  background: #202c33;
+  color: #fff;
+}
+
+.msg.right {
+  background: #005c4b;
+  color: #fff;
+  margin-left: auto;
+}
+
+.chat-footer {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background: #202c33;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+.chat-footer input {
+  flex: 1;
+  padding: 8px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  background: #2a3942;
+  color: white;
+}
+
+.chat-footer button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 18px;
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+#irPolicialBtn {
+  background: #ff4747;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#irPolicialBtn:hover {
+  background: #c53131;
+}
+
+/* ======== WEB POLICIAL ======== */
+#web-policial {
+  display: none;
+  background: #0e0e0e;
+  min-height: 100vh;
+  color: white;
+}
+
+/* Header */
+#main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #111;
+  padding: 15px 30px;
+  border-bottom: 2px solid #222;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+  background: #ff4747;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 25px;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+nav a:hover, nav a.active {
+  color: #ff4747;
+}
+
+/* Main content */
+#main-content {
+  display: flex;
+  justify-content: space-between;
+  padding: 30px;
+}
+
+.panel {
+  flex: 2;
+  background: #1c1c1c;
+  padding: 25px;
+  border-radius: 12px;
+  margin-right: 20px;
+}
+
+.sidebar {
+  flex: 1;
+  background: #141414;
+  padding: 20px;
+  border-radius: 12px;
+  height: fit-content;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.sidebar li {
+  margin: 10px 0;
+  font-size: 15px;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.tabs button {
+  flex: 1;
+  background: #222;
+  color: #eee;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.tabs button.active {
+  background: #ff4747;
+}
+
+/* Caso */
+.card {
+  background: #181818;
+  padding: 20px;
+  border-radius: 10px;
+  line-height: 1.6;
+}
+
+/* Pistas */
+.pistas-screen {
+  display: none;
+  padding: 30px;
+  text-align: center;
+}
+
+.pistas-grid-screen {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.pista img {
+  width: 100%;
+  border-radius: 10px;
+  border: 2px solid #444;
+}
+
+.confirmar-btn {
+  margin-top: 20px;
+  background: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.confirmar-btn:hover {
+  background: #1e7e34;
+}
+
+/* Sospechosos */
+.sospechosos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.sospechoso {
+  background: #1c1c1c;
+  padding: 10px;
+  border-radius: 12px;
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.sospechoso:hover {
+  transform: scale(1.05);
+}
+
+.sospechoso img {
+  width: 100%;
+  border-radius: 10px;
+  height: 220px;
+  object-fit: cover;
+}
+
+.nombre-sospechoso {
+  margin-top: 8px;
+  background: #ff4747;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.volver-btn {
+  background: #444;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.volver-btn:hover {
+  background: #666;
+}
+
+/* Resultados */
+.resultado h1 {
+  color: #ff4747;
+}
+
+.resultado .volver-inicio {
+  margin-top: 20px;
+  background: #007bff;
+}
+
+.resultado .volver-inicio:hover {
+  background: #005ec9;
+}
+
+/* Footer */
+#main-footer {
+  text-align: center;
+  background: #111;
+  padding: 15px;
+  border-top: 2px solid #222;
+  font-size: 14px;
+}
+/* ================== TÍTULO DINÁMICO ================== */
+.titulo-dinamico {
+  text-align: center;
+  font-size: 2rem;
+  color: #fff;
+  margin-top: 20px;
+  animation: aparecerTitulo 0.4s ease;
+  transition: opacity 0.3s ease;
+}
+
+.titulo-dinamico.oculto {
+  opacity: 0;
+  visibility: hidden;
+}
+
+@keyframes aparecerTitulo {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animacion-captura {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.9);
+  display: none;
+  justify-content: center;
+  align-items: flex-end;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.destellos {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(255,0,0,0.3) 0 10px,
+    rgba(0,0,255,0.3) 10px 20px
+  );
+  animation: destello 0.2s infinite alternate;
+}
+
+@keyframes destello {
+  0% { opacity: 0; }
+  50% { opacity: 0.5; }
+  100% { opacity: 0; }
+}
+
+.policia, .sospechosa {
+  width: 80px;
+  height: 150px;
+  position: absolute;
+  bottom: 50px;
+  background-size: cover;
+}
+
+.policia {
+  left: -100px;
+  background-image: url('policia.png'); /* policía */
+  animation: moverPolicia 1.5s forwards;
+}
+
+.sospechosa {
+  right: 100px;
+  background-image: url('rubia.png'); /* sospechosa rubia */
+}
+
+@keyframes moverPolicia {
+  0% { left: -100px; }
+  80% { left: 120px; }
+  100% { left: 150px; }
+}
+
+.shake {
+  animation: shake 0.5s;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-10px); }
+  50% { transform: translateX(10px); }
+  75% { transform: translateX(-10px); }
+}#resultado-correcto,
+#resultado-incorrecto,
+#videoFinal {
+  display: none;
+}
+
+#videoFinal video {
+  border: 3px solid #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+#videoFinal video,
+#videoIncorrecto video {
+  border: 3px solid #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+#finalMensaje {
+  animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+#selloFinal, #agradecimientoFinal {
+  background-color: #000;
+  color: white;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: 'Impact', sans-serif;
+  overflow: hidden;
+  text-align: center;
+}
+
+.sello-container {
+  position: relative;
+  width: 400px;
+  height: 400px;
+}
+
+#sello-texto {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(3);
+  opacity: 0;
+  border: 6px solid red;
+  border-radius: 50%;
+  padding: 40px;
+  text-align: center;
+  color: red;
+  font-size: 3em;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  animation: none;
+}
+
+@keyframes selloGolpe {
+  0% { transform: translate(-50%, -200%) scale(1.5); opacity: 0; }
+  60% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+  80% { transform: translate(-50%, -48%) scale(1.1); }
+  100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+}
+
+@keyframes glow {
+  0% { box-shadow: 0 0 0 red; }
+  50% { box-shadow: 0 0 40px red; }
+  100% { box-shadow: 0 0 0 red; }
+}
+
+.mensaje-final {
+  animation: fadeIn 2s ease-in-out;
+  font-family: 'Arial', sans-serif;
+}
+
+.mensaje-final h2 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+.mensaje-final p {
+  font-size: 1.5em;
+  opacity: 0.8;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
