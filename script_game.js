@@ -1,19 +1,3 @@
-// ===================== ETAPA 1: CONTRASEÑA principal=====================
-function mostrarPassword() {
-  document.getElementById("contrato").style.display = "none";
-  document.getElementById("passwordScreen").style.display = "block";
-}
-
-function verificarPassword() {
-  const pass = document.getElementById("password").value;
-  const error = document.getElementById("error");
-  if (pass.toLowerCase() === "Yoni") {
-    document.getElementById("passwordScreen").style.display = "none";
-    document.getElementById("whatsapp").style.display = "block";
-  } else {
-    error.style.display = "block";
-  }
-}
 
 // ===================== ETAPA 1: PUZZLE CON ARRASTRE =====================
 const puzzle = document.getElementById("puzzle");
