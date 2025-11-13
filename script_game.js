@@ -9,7 +9,7 @@ const puzzle = document.getElementById("puzzle"); // ya existe en tu puzzle
 puzzle.style.display = "none";
 
 btnClaveInicial.addEventListener("click", () => {
-  const claveCorrecta = "macuca2025"; // 🔐 Cambiala si querés
+  const claveCorrecta = "Macucaaa"; // 🔐 Cambiala si querés
   if (claveInicial.value.trim().toLowerCase() === claveCorrecta) {
     inicioPassword.classList.add("ocultar-password");
     setTimeout(() => {
