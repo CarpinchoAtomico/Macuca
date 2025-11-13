@@ -1,20 +1,24 @@
 // ===================== CONTRASEÑA INICIAL =====================
-const pantallaPassword = document.getElementById("pantalla-password");
-const inputPassword = document.getElementById("input-password");
-const btnValidar = document.getElementById("btn-validar");
-const mensajeError = document.getElementById("mensaje-error");
-const puzzleSection = document.getElementById("puzzle");
+const inicioPassword = document.getElementById("inicio-password");
+const claveInicial = document.getElementById("clave-inicial");
+const btnClaveInicial = document.getElementById("btn-clave-inicial");
+const errorInicial = document.getElementById("error-inicial");
+const puzzle = document.getElementById("puzzle"); // ya existe en tu puzzle
 
-puzzleSection.style.display = "none"; // oculta el puzzle al inicio
+// Oculta el puzzle al principio
+puzzle.style.display = "none";
 
-btnValidar.addEventListener("click", () => {
-  const clave = "macuca2025"; // 🔐 cambia esta contraseña si querés
-  if (inputPassword.value.trim().toLowerCase() === clave) {
-    pantallaPassword.style.display = "none";
-    puzzleSection.style.display = "grid"; // muestra el puzzle original
+btnClaveInicial.addEventListener("click", () => {
+  const claveCorrecta = "macuca2025"; // 🔐 Cambiala si querés
+  if (claveInicial.value.trim().toLowerCase() === claveCorrecta) {
+    inicioPassword.classList.add("ocultar-password");
+    setTimeout(() => {
+      inicioPassword.style.display = "none";
+      puzzle.style.display = "grid"; // muestra el puzzle
+    }, 1000);
   } else {
-    mensajeError.style.display = "block";
-    inputPassword.value = "";
+    errorInicial.style.display = "block";
+    claveInicial.value = "";
   }
 });
 
