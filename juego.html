@@ -6,25 +6,19 @@
   <link rel="stylesheet" href="estilos_game.css">
 </head>
 <body>
-
   
-        
-      <button id="nextBtn" onclick="mostrarPassword()">Siguiente</button>
-    </div>
-
-    <!-- PANTALLA CONTRASEÑA -->
-    <div id="passwordScreen">
-      <h2>Ingrese la contraseña</h2>
-      <input type="password" id="password" placeholder="Contraseña">
-      <br>
-      <button onclick="verificarPassword()">Ingresar</button>
-      <p id="error" style="color:red; display:none;">Contraseña incorrecta</p>
-    </div>
-
-
   <!-- ========== PARTE 1: PUZZLE → CONTRATO → CONTRASEÑA → WHATSAPP ========== -->
   <div id="escape-room">
-
+    
+<!-- 🔐 SECCIÓN DE CONTRASEÑA INICIAL -->
+<div id="pantalla-password" class="pantalla-inicial">
+  <h1>🔒 Acceso Restringido</h1>
+  <p>Introduce la contraseña para comenzar la investigación</p>
+  <input type="password" id="input-password" placeholder="Contraseña..." />
+  <button id="btn-validar">Acceder</button>
+  <p id="mensaje-error" class="error-msg" style="display:none;">Contraseña incorrecta</p>
+</div>
+v
     <!-- PUZZLE -->
     <div id="puzzle-container">
       <h1>Resuelve el caso</h1>
