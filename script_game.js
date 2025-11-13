@@ -1,27 +1,19 @@
-// ===================== CONTRASEÑA INICIAL =====================
-const inicioPassword = document.getElementById("inicio-password");
-const claveInicial = document.getElementById("clave-inicial");
-const btnClaveInicial = document.getElementById("btn-clave-inicial");
-const errorInicial = document.getElementById("error-inicial");
-const puzzle = document.getElementById("puzzle"); // ya existe en tu puzzle
+// ===================== ETAPA 1: CONTRASEÑA principal=====================
+function mostrarPassword() {
+  document.getElementById("contrato").style.display = "none";
+  document.getElementById("passwordScreen").style.display = "block";
+}
 
-// Oculta el puzzle al principio
-puzzle.style.display = "none";
-
-btnClaveInicial.addEventListener("click", () => {
-  const claveCorrecta = "macuca2025"; // 🔐 Cambiala si querés
-  if (claveInicial.value.trim().toLowerCase() === claveCorrecta) {
-    inicioPassword.classList.add("ocultar-password");
-    setTimeout(() => {
-      inicioPassword.style.display = "none";
-      puzzle.style.display = "grid"; // muestra el puzzle
-    }, 1000);
+function verificarPassword() {
+  const pass = document.getElementById("password").value;
+  const error = document.getElementById("error");
+  if (pass.toLowerCase() === "macuca") {
+    document.getElementById("passwordScreen").style.display = "none";
+    document.getElementById("whatsapp").style.display = "block";
   } else {
-    errorInicial.style.display = "block";
-    claveInicial.value = "";
+    error.style.display = "block";
   }
-});
-
+}
 
 // ===================== ETAPA 1: PUZZLE CON ARRASTRE =====================
 const puzzle = document.getElementById("puzzle");
