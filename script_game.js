@@ -1,3 +1,26 @@
+// ===================== CONTRASEÑA INICIAL =====================
+const inicioPassword = document.getElementById("inicio-password");
+const claveInicial = document.getElementById("clave-inicial");
+const btnClaveInicial = document.getElementById("btn-clave-inicial");
+const errorInicial = document.getElementById("error-inicial");
+const puzzle = document.getElementById("puzzle"); // ya existe en tu puzzle
+
+// Oculta el puzzle al principio
+puzzle.style.display = "none";
+
+btnClaveInicial.addEventListener("click", () => {
+  const claveCorrecta = "macuca2025"; // 🔐 Cambiala si querés
+  if (claveInicial.value.trim().toLowerCase() === claveCorrecta) {
+    inicioPassword.classList.add("ocultar-password");
+    setTimeout(() => {
+      inicioPassword.style.display = "none";
+      puzzle.style.display = "grid"; // muestra el puzzle
+    }, 1000);
+  } else {
+    errorInicial.style.display = "block";
+    claveInicial.value = "";
+  }
+});
 
 // ===================== ETAPA 1: PUZZLE CON ARRASTRE =====================
 const puzzle = document.getElementById("puzzle");
