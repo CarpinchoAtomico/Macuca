@@ -3,20 +3,36 @@ const inicioPassword = document.getElementById("inicio-password");
 const claveInicial = document.getElementById("clave-inicial");
 const btnClaveInicial = document.getElementById("btn-clave-inicial");
 const errorInicial = document.getElementById("error-inicial");
-const puzzle = document.getElementById("puzzle"); // ya existe en tu puzzle
 
-// Oculta el puzzle al principio
-puzzle.style.display = "none";
+// 🧩 Este es tu puzzle real
+const puzzle = document.getElementById("puzzle");
+const tituloPuzzle = document.getElementById("titulo-puzzle") || null; // por si tenés el h1 "Resuelve el puzzle"
+const success = document.getElementById("success") || null;
 
+// Oculta puzzle y título al inicio
+if (puzzle) puzzle.style.display = "none";
+if (tituloPuzzle) tituloPuzzle.style.display = "none";
+if (success) success.style.display = "none";
+
+// Escucha el botón de acceso
 btnClaveInicial.addEventListener("click", () => {
-  const claveCorrecta = "Macucaa"; // 🔐 Cambiala si querés
-  if (claveInicial.value.trim().toLowerCase() === claveCorrecta) {
+  const claveCorrecta = "macuca2025"; // 🔐 cambia esta si querés
+  const claveIngresada = claveInicial.value.trim().toLowerCase();
+
+  if (claveIngresada === claveCorrecta) {
+    // ✅ Contraseña correcta
+    errorInicial.style.display = "none";
     inicioPassword.classList.add("ocultar-password");
+
+    // Después de 1 segundo, oculta la pantalla de login y muestra el puzzle
     setTimeout(() => {
       inicioPassword.style.display = "none";
-      puzzle.style.display = "grid"; // muestra el puzzle
+      if (tituloPuzzle) tituloPuzzle.style.display = "block";
+      if (puzzle) puzzle.style.display = "grid"; // o "block", según tu CSS
     }, 1000);
   } else {
+    // ❌ Contraseña incorrecta
+    errorInicial.textContent = "Contraseña incorrecta";
     errorInicial.style.display = "block";
     claveInicial.value = "";
   }
