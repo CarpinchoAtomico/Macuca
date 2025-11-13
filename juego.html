@@ -7,16 +7,15 @@
 </head>
 <body>
 
-  <!-- 🔐 SECCIÓN DE CONTRASEÑA INICIAL -->
-<section id="inicio-password" class="pantalla-password">
-  <div class="password-contenedor">
-    <h1>🔒 Acceso Restringido</h1>
-    <p>Introduce la contraseña para comenzar la investigación</p>
-    <input type="password" id="clave-inicial" placeholder="Contraseña..." />
-    <button id="btn-clave-inicial">Acceder</button>
-    <p id="error-inicial" class="error-texto" style="display:none;">Contraseña incorrecta</p>
-  </div>
-</section>
+    <!-- PANTALLA CONTRASEÑA 1-->
+    <div id="passwordScreen">
+      <h2>Ingrese la contraseña</h2>
+      <input type="password" id="password" placeholder="Contraseña">
+      <br>
+      <button onclick="verificarPassword()">Ingresar</button>
+      <p id="error" style="color:red; display:none;">Contraseña incorrecta</p>
+    </div>
+
 
   <!-- ========== PARTE 1: PUZZLE → CONTRATO → CONTRASEÑA → WHATSAPP ========== -->
   <div id="escape-room">
