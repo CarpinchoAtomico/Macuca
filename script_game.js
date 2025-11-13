@@ -7,7 +7,7 @@ function mostrarPassword() {
 function verificarPassword() {
   const pass = document.getElementById("password").value;
   const error = document.getElementById("error");
-  if (pass.toLowerCase() === "macuca") {
+  if (pass.toLowerCase() === "12345") {
     document.getElementById("passwordScreen").style.display = "none";
     document.getElementById("whatsapp").style.display = "block";
   } else {
