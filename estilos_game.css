@@ -54,6 +54,10 @@
   font-weight: bold;
 }
 
+.ocultar-password {
+  opacity: 0;
+  transition: opacity 1s ease;
+}
 
   /* ======== PUZZLE ======== */
   #puzzle-container {
