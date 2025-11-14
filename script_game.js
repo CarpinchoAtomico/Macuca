@@ -18,7 +18,7 @@ if (success) success.style.display = "none";
 // Escucha el botón de acceso (evento correcto: "click")
 if (btnClaveInicial) {
   btnClaveInicial.addEventListener("click", () => {
-    const claveCorrecta = "macuca2025"; // 🔐 cambia esta si querés
+    const claveCorrecta = "1708"; // 🔐 cambia esta si querés
     const claveIngresada = (claveInicial && claveInicial.value || "").trim().toLowerCase();
 
     if (claveIngresada === claveCorrecta) {
