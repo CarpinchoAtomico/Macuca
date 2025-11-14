@@ -4,50 +4,54 @@ const claveInicial = document.getElementById("clave-inicial");
 const btnClaveInicial = document.getElementById("btn-clave-inicial");
 const errorInicial = document.getElementById("error-inicial");
 
-// 🧩 Este es tu puzzle real
+// 🧩 Este es tu puzzle real (declarado una sola vez)
 const puzzle = document.getElementById("puzzle");
 const tituloPuzzle = document.getElementById("titulo-puzzle") || null; // por si tenés el h1 "Resuelve el puzzle"
 const success = document.getElementById("success") || null;
+const contrato = document.getElementById("contrato") || null;
 
 // Oculta puzzle y título al inicio
 if (puzzle) puzzle.style.display = "none";
 if (tituloPuzzle) tituloPuzzle.style.display = "none";
 if (success) success.style.display = "none";
 
-// Escucha el botón de acceso
-btnClaveInicial.addEventListener("onclick", () => {
-  const claveCorrecta = "macuca2025"; // 🔐 cambia esta si querés
-  const claveIngresada = claveInicial.value.trim().toLowerCase();
+// Escucha el botón de acceso (evento correcto: "click")
+if (btnClaveInicial) {
+  btnClaveInicial.addEventListener("click", () => {
+    const claveCorrecta = "macuca2025"; // 🔐 cambia esta si querés
+    const claveIngresada = (claveInicial && claveInicial.value || "").trim().toLowerCase();
 
-  if (claveIngresada === claveCorrecta) {
-    // ✅ Contraseña correcta
-    errorInicial.style.display = "none";
-    inicioPassword.classList.add("ocultar-password");
+    if (claveIngresada === claveCorrecta) {
+      // ✅ Contraseña correcta
+      if (errorInicial) errorInicial.style.display = "none";
+      if (inicioPassword) inicioPassword.classList.add("ocultar-password");
 
-    // Después de 1 segundo, oculta la pantalla de login y muestra el puzzle
-    setTimeout(() => {
-      inicioPassword.style.display = "none";
-      if (tituloPuzzle) tituloPuzzle.style.display = "block";
-      if (puzzle) puzzle.style.display = "grid"; // o "block", según tu CSS
-    }, 1000);
-  } else {
-    // ❌ Contraseña incorrecta
-    errorInicial.textContent = "Contraseña incorrecta";
-    errorInicial.style.display = "block";
-    claveInicial.value = "";
-  }
-});
+      // Después de 1 segundo, oculta la pantalla de login y muestra el puzzle
+      setTimeout(() => {
+        if (inicioPassword) inicioPassword.style.display = "none";
+        if (tituloPuzzle) tituloPuzzle.style.display = "block";
+        if (puzzle) puzzle.style.display = "grid"; // o "block", según tu CSS
+      }, 1000);
+    } else {
+      // ❌ Contraseña incorrecta
+      if (errorInicial) {
+        errorInicial.textContent = "Contraseña incorrecta";
+        errorInicial.style.display = "block";
+      }
+      if (claveInicial) claveInicial.value = "";
+    }
+  });
+}
 
 // ===================== ETAPA 1: PUZZLE CON ARRASTRE =====================
-const puzzle = document.getElementById("puzzle");
-const success = document.getElementById("success");
-const contrato = document.getElementById("contrato");
+// (puzzle y success ya declarados arriba)
 const gridSize = 4; // 4x4 piezas
 const totalPiezas = gridSize * gridSize;
 let piezas = [];
 
 // Crear puzzle
 function crearPuzzle() {
+  if (!puzzle) return;
   puzzle.innerHTML = "";
   piezas = [];
 
@@ -120,6 +124,7 @@ function dragEnd() {
 }
 
 function comprobarGanado() {
+  if (!puzzle || !success) return;
   const piezasActuales = [...puzzle.children];
   const correcto = piezasActuales.every(
     (pieza, i) => parseInt(pieza.dataset.correct) === i
@@ -130,7 +135,7 @@ function comprobarGanado() {
     setTimeout(() => {
       puzzle.style.display = "none";
       success.style.display = "none";
-      contrato.style.display = "block";
+      if (contrato) contrato.style.display = "block";
     }, 1500);
   }
 }
@@ -141,27 +146,37 @@ crearPuzzle();
 
 // ===================== ETAPA 2: CONTRASEÑA =====================
 function mostrarPassword() {
-  document.getElementById("contrato").style.display = "none";
-  document.getElementById("passwordScreen").style.display = "block";
+  if (document.getElementById("contrato"))
+    document.getElementById("contrato").style.display = "none";
+  if (document.getElementById("passwordScreen"))
+    document.getElementById("passwordScreen").style.display = "block";
 }
 
 function verificarPassword() {
-  const pass = document.getElementById("password").value;
+  const passEl = document.getElementById("password");
   const error = document.getElementById("error");
+  const pass = passEl ? passEl.value : "";
   if (pass.toLowerCase() === "macuca") {
-    document.getElementById("passwordScreen").style.display = "none";
-    document.getElementById("whatsapp").style.display = "block";
+    if (document.getElementById("passwordScreen"))
+      document.getElementById("passwordScreen").style.display = "none";
+    if (document.getElementById("whatsapp"))
+      document.getElementById("whatsapp").style.display = "block";
   } else {
-    error.style.display = "block";
+    if (error) error.style.display = "block";
   }
 }
 
 
 // ===================== ETAPA 3: WHATSAPP =====================
-document.getElementById("irPolicialBtn").addEventListener("click", () => {
-  document.getElementById("whatsapp").style.display = "none";
-  document.getElementById("web-policial").style.display = "block";
-});
+const irPolicialBtn = document.getElementById("irPolicialBtn");
+if (irPolicialBtn) {
+  irPolicialBtn.addEventListener("click", () => {
+    const w = document.getElementById("whatsapp");
+    const web = document.getElementById("web-policial");
+    if (w) w.style.display = "none";
+    if (web) web.style.display = "block";
+  });
+}
 
 
 // ===================== ETAPA 4: WEB POLICIAL =====================
@@ -187,9 +202,13 @@ document.querySelectorAll("nav a").forEach(link => {
 
 
 // Botón “Ingresar al caso”
-document.querySelector(".iniciar-btn").addEventListener("click", () => {
-  document.getElementById("caso-section").style.display = "block";
-  document.getElementById("equipo-section").style.display = "none";
+document.querySelectorAll(".iniciar-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const caso = document.getElementById("caso-section");
+    const equipo = document.getElementById("equipo-section");
+    if (caso) caso.style.display = "block";
+    if (equipo) equipo.style.display = "none";
+  });
 });
 
 
@@ -219,24 +238,34 @@ function mostrarPistas() {
 }
 
 // Botón “Volver” de pistas
-document.getElementById("volver-btn").addEventListener("click", () => {
-  document.getElementById("pistas-screen").style.display = "none";
-  document.getElementById("main-content").style.display = "flex";
-});
+const volverBtn = document.getElementById("volver-btn");
+if (volverBtn) {
+  volverBtn.addEventListener("click", () => {
+    document.getElementById("pistas-screen").style.display = "none";
+    document.getElementById("main-content").style.display = "flex";
+  });
+}
 
 
 // Botón “Confirmar asesino”
-document.getElementById("confirmar-asesino-btn").addEventListener("click", () => {
-  document.getElementById("pistas-screen").style.display = "none";
-  document.getElementById("sospechosos-screen").style.display = "block";
-});
+const confirmarBtn = document.getElementById("confirmar-asesino-btn");
+if (confirmarBtn) {
+  confirmarBtn.addEventListener("click", () => {
+    document.getElementById("pistas-screen").style.display = "none";
+    document.getElementById("sospechosos-screen").style.display = "block";
+  });
+}
 
 
 // Botón “Volver” desde sospechosos
-document.getElementById("volver-pistas").addEventListener("click", () => {
-  document.getElementById("sospechosos-screen").style.display = "none";
-  document.getElementById("pistas-screen").style.display = "block";
-});
+const volverPistas = document.getElementById("volver-pistas");
+if (volverPistas) {
+  volverPistas.addEventListener("click", () => {
+    document.getElementById("sospechosos-screen").style.display = "none";
+    document.getElementById("pistas-screen").style.display = "block";
+  });
+}
+
 // Selección de sospechosos
 document.querySelectorAll(".nombre-sospechoso").forEach(btn => {
   btn.addEventListener("click", () => {
@@ -249,32 +278,36 @@ document.querySelectorAll(".nombre-sospechoso").forEach(btn => {
     const videoCaptura = document.getElementById("videoCaptura");
     const videoFuga = document.getElementById("videoFuga");
 
-    sospechososScreen.style.display = "none";
+    if (sospechososScreen) sospechososScreen.style.display = "none";
 
     if (correcto) {
-      resultadoCorrecto.style.display = "block";
+      if (resultadoCorrecto) resultadoCorrecto.style.display = "block";
       setTimeout(() => {
-        resultadoCorrecto.style.display = "none";
-        videoSection.style.display = "block";
-        videoCaptura.play();
+        if (resultadoCorrecto) resultadoCorrecto.style.display = "none";
+        if (videoSection) videoSection.style.display = "block";
+        if (videoCaptura) videoCaptura.play();
       }, 2500);
 
-      videoCaptura.onended = () => {
-        videoSection.style.display = "none";
-        mostrarSello("CASO CERRADO", "red");
-      };
+      if (videoCaptura) {
+        videoCaptura.onended = () => {
+          if (videoSection) videoSection.style.display = "none";
+          mostrarSello("CASO CERRADO", "red");
+        };
+      }
     } else {
-      resultadoIncorrecto.style.display = "block";
+      if (resultadoIncorrecto) resultadoIncorrecto.style.display = "block";
       setTimeout(() => {
-        resultadoIncorrecto.style.display = "none";
-        videoIncorrecto.style.display = "block";
-        videoFuga.play();
+        if (resultadoIncorrecto) resultadoIncorrecto.style.display = "none";
+        if (videoIncorrecto) videoIncorrecto.style.display = "block";
+        if (videoFuga) videoFuga.play();
       }, 2500);
 
-      videoFuga.onended = () => {
-        videoIncorrecto.style.display = "none";
-        mostrarSello("CASO NO RESUELTO", "gray");
-      };
+      if (videoFuga) {
+        videoFuga.onended = () => {
+          if (videoIncorrecto) videoIncorrecto.style.display = "none";
+          mostrarSello("CASO NO RESUELTO", "gray");
+        };
+      }
     }
   });
 });
@@ -284,6 +317,8 @@ function mostrarSello(texto, color) {
   const selloFinal = document.getElementById("selloFinal");
   const selloTexto = document.getElementById("sello-texto");
   const agradecimiento = document.getElementById("agradecimientoFinal");
+
+  if (!selloFinal || !selloTexto || !agradecimiento) return;
 
   selloTexto.textContent = texto;
   selloTexto.style.color = color;
