@@ -15,7 +15,7 @@ if (tituloPuzzle) tituloPuzzle.style.display = "none";
 if (success) success.style.display = "none";
 
 // Escucha el botón de acceso
-btnClaveInicial.addEventListener("click", () => {
+btnClaveInicial.addEventListener("onclick", () => {
   const claveCorrecta = "macuca2025"; // 🔐 cambia esta si querés
   const claveIngresada = claveInicial.value.trim().toLowerCase();
 
